@@ -27,7 +27,7 @@ async function getAddressFromCoords(lat, lon) {
     
     const response = await fetch(url);
     const data = await response.json();
-    return data.result.items[0].address_name || "Адрес не найден";
+    return data.result.items[0].address_name || url;
   } catch (error) {
     console.error("Ошибка получения адреса:", error);
     return "Ошибка получения адреса";

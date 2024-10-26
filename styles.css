@@ -9,6 +9,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  background-color: #f0f0f0;
 }
 
 .container {
@@ -17,6 +18,7 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
   text-align: center;
 }
 
@@ -28,6 +30,7 @@ label {
   display: block;
   text-align: left;
   margin-top: 10px;
+  font-weight: bold;
 }
 
 input {
@@ -48,4 +51,22 @@ button {
   color: white;
   font-size: 16px;
   cursor: pointer;
+}
+
+.suggestions-container {
+  position: relative;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: white;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
 }

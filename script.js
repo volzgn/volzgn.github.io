@@ -29,15 +29,15 @@ async function getAddressFromCoords(lat, lon) {
   }
 }
 
-// Функция для предложения адресов в поле "Куда"
+// Функция для предложения адресов в поле "Куда" с использованием Suggest API и параметра suggest_type=route_endpoint
 async function suggestAddresses(query) {
   try {
-    const response = await fetch(`https://catalog.api.2gis.ru/3.0/items?q=${query}&key=${apiKey}&type=building%2Cattraction%2Cstation_platform&fields=items.address`);
+    const response = await fetch(`https://catalog.api.2gis.ru/3.0/suggests?q=${query}&key=988f7970-4e3c-4022-b4f4-a389981b9b68&suggest_type=route_endpoint&locale=ru_RU&fields=items.full_address_name`);
     const data = await response.json();
-    return data.result.items.map(item => item.address_name);
+    return data.result.items.map(item => item.name);
   } catch (error) {
     console.error("Ошибка получения предложений адресов:", error);
-    return [];
+    return [`https://catalog.api.2gis.ru/3.0/suggests?q=${query}&key=${apiKey}&type=address&suggest_type=route_endpoint`];
   }
 }
 

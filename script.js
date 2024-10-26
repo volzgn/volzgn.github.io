@@ -20,17 +20,12 @@ function getCurrentLocation() {
 // Функция для получения адреса из координат
 async function getAddressFromCoords(lat, lon) {
   try {
-    const url = `https://catalog.api.2gis.ru/3.0/items/geocode?key=${apiKey}&lon=${lon}&lat=${lat}`;
-    
-    // Выводим запрос в консоль перед отправкой
-    console.error(`Запрос к 2Gis API: ${url}`);
-    
-    const response = await fetch(url);
+    const response = await fetch(`https://catalog.api.2gis.ru/3.0/items/geocode?key=${apiKey}&lon=${lon}&lat=${lat}&radius=50&fields=items.address&type=building%2Cattraction%2Cstation_platform`);
     const data = await response.json();
-    return data.result.items[0].address_name || url;
+    return data.result.items[0].full_name || `https://catalog.api.2gis.ru/3.0/items/geocode?key=${apiKey}&lon=${lon}&lat=${lat}&radius=50&fields=items.address&type=building%2Cattraction%2Cstation_platform`;
   } catch (error) {
     console.error("Ошибка получения адреса:", error);
-    return "Ошибка получения адреса";
+    return `https://catalog.api.2gis.ru/3.0/items/geocode?key=${apiKey}&lon=${lon}&lat=${lat}&radius=50&fields=items.address&type=street%2Cbuilding%2Cattraction%2Cstation_platform`;
   }
 }
 
@@ -47,5 +42,5 @@ function orderTaxi() {
   alert(`Заказ такси\nОткуда: ${from}\nКуда: ${to}`);
 }
 
-// Вызов функции для автоматического заполнения поля "Откуда" при загрузке страницы
+// Вызов функции для автоматического заполнения поля "Откуда"
 window.onload = getCurrentLocation;

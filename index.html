@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Такси</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Заказ Такси</h1>
+    <label for="from">Откуда:</label>
+    <input type="text" id="from" placeholder="Определение местоположения..." readonly>
+
+    <label for="to">Куда:</label>
+    <input type="text" id="to" placeholder="Введите адрес">
+
+    <button onclick="orderTaxi()">Заказать такси</button>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

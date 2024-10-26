@@ -20,7 +20,12 @@ function getCurrentLocation() {
 // Функция для получения адреса из координат
 async function getAddressFromCoords(lat, lon) {
   try {
-    const response = await fetch(`https://catalog.api.2gis.ru/3.0/items/geocode?key=${apiKey}&lon=${lon}&lat=${lat}`);
+    const url = `https://catalog.api.2gis.ru/3.0/items/geocode?key=${apiKey}&lon=${lon}&lat=${lat}`;
+    
+    // Выводим запрос в консоль перед отправкой
+    console.log(`Запрос к 2Gis API: ${url}`);
+    
+    const response = await fetch(url);
     const data = await response.json();
     return data.result.items[0].address_name || "Адрес не найден";
   } catch (error) {
@@ -42,5 +47,5 @@ function orderTaxi() {
   alert(`Заказ такси\nОткуда: ${from}\nКуда: ${to}`);
 }
 
-// Вызов функции для автоматического заполнения поля "Откуда"
+// Вызов функции для автоматического заполнения поля "Откуда" при загрузке страницы
 window.onload = getCurrentLocation;

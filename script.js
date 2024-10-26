@@ -23,7 +23,7 @@ async function getAddressFromCoords(lat, lon) {
     const url = `https://catalog.api.2gis.ru/3.0/items/geocode?key=${apiKey}&lon=${lon}&lat=${lat}`;
     
     // Выводим запрос в консоль перед отправкой
-    console.log(`Запрос к 2Gis API: ${url}`);
+    console.error(`Запрос к 2Gis API: ${url}`);
     
     const response = await fetch(url);
     const data = await response.json();
